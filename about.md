@@ -1,21 +1,8 @@
 ---
 layout: page
-title: About
+title: Sobre mí
 permalink: /about/
 ---
+¡Hola! Soy Victoria, estudiante de Artes Multimediales en la Universidad Nacional de las Artes. Mi formación técnica abarca diversos campos audiovisuales como la imagen, el sonido, la edición, la animación 2D cuadro a cuadro (rotoscopía y stop motion), la fotografía y el videomapping. Además, cuento con conocimientos en tecnología aplicada, incluyendo programación de páginas web, Processing, P5.js, instalaciones interactivas con OpenFrameworks (C++) y Arduino.
 
-This is a template website for showing p5.js sketches. See [here](https://github.com/BenjaminHabert/jekyll-p5-portfolio) for more infos.
-
-
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
-
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
-
-
-[jekyll-organization]: https://github.com/jekyll
+Como estudiante multimedia, me interesa demostrar la conexión entre las artes clásicas y la tecnología en la era digital. Mi enfoque combina la creación estética y conceptual con la materialización de ideas en el mundo físico, utilizando herramientas tecnológicas como medio de expresión.
