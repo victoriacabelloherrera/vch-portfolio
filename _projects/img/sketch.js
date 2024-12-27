@@ -1,7 +1,7 @@
 let img;
 
 function preload() {
-    fondo = loadImage("thumbnail.png");
+    fondo = loadImage("codigoo.png");
   }
 
   function setup() {
