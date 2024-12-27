@@ -10,24 +10,27 @@ function draw() {
   background(0);
   let centroX = width / 2;
   let centroY = height / 2;
-  for (let i = 50; i < 400; i += 50) {
-    for (let j = 50; j < 400; j += 50) {
+  let espacio = 65; 
+  let inicioX = centroX - 3 * espacio; 
+  let inicioY = centroY - 3 * espacio;
+
+  for (let i = inicioX; i <= centroX + 3 * espacio; i += espacio) {
+    for (let j = inicioY; j <= centroY + 3 * espacio; j += espacio) {
       let distancia = dist(centroX, centroY, i, j);
-      
 
       noFill();
-      stroke(200 - i, i, 200 - j);
+      stroke(200 - i % 255, i % 255, 200 - j % 255);
       strokeWeight(3);
-      let offsetBig = map(sin(angulo + distancia), -1, 1, -20, 20);
-      let rBig = 25 + offsetBig;
-      rect(i, j, rBig, rBig);
+      let movGrande = map(sin(angulo + distancia), -1, 1, -20, 20); 
+      let recGrande = 40 + movGrande; 
+      rect(i, j, recGrande, recGrande);
 
-
-      stroke(255, 0, 0); 
-      let offsetSmall = map(cos(angulo + distancia), -1, 1, -10, 10);
-      let rSmall = 10 + offsetSmall;
-      rect(i, j, rSmall, rSmall);
+      stroke(255, 0, 0);
+      let movChico = map(cos(angulo + distancia), -1, 1, -10, 10); 
+      let recChico = 15 + movChico; 
+      rect(i, j, recChico, recChico);
     }
   }
   angulo += 0.1;
 }
+
