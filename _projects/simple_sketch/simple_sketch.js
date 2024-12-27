@@ -1,33 +1,77 @@
-var x = 100,
-  y = 100,
-  angle1 = 0.0,
-  segLength = 50;
-
-
 function setup() {
-  canvas = createCanvas(710, 400);
-  canvas.parent('simple-sketch-holder');
+  createCanvas(512, 512);
 }
 
 function draw() {
-  strokeWeight(20.0);
-  stroke(255, 100);
-  background(50);
+  background(33, 37, 41); // gris oscuro
 
-  dx = mouseX - x;
-  dy = mouseY - y;
-  angle1 = atan2(dy, dx);
-  x = mouseX - (cos(angle1) * segLength);
-  y = mouseY - (sin(angle1) * segLength);
+  let color1 = color(mouseX);
+  let color2 = color(mouseY);
+  let color3 = color(222, 226, 230);
 
-  segment(x, y, angle1);
-  ellipse(x, y, 20, 20);
-}
+  //x1punto y y1punto como los dos parámetros de la línea
+  let x1punto = 80;
+  let y1punto = 10;
 
-function segment(x, y, a) {
-  push();
-  translate(x, y);
-  rotate(a);
-  line(0, 0, segLength, 0);
-  pop();
+  //x2punto y y2punto como los últimos parámetros de la línea
+  let x2punto = 10; // si aumento valor me hace una distancia entre   lineas
+  let y2punto = 25; //si aumento el valor me abre mas el centro y     si bajo me lo achica
+
+  //posiciones
+  let xposicion = mouseX;
+  let yposicion = mouseY;
+
+  // Usé if-else para restringir los valores de "xposicion" e         "yposicion" dentro de los límites del lienzo y que los elementos   dibujados permanezcan dentro.
+
+  for (let i = 0; i <= 80; i++) {
+    if (xposicion < 0) {
+      xposicion = 0;
+    } else if (xposicion > width) {
+      xposicion = width;
+    }
+
+    if (yposicion < 0) {
+      yposicion = 0;
+    } else if (yposicion > height) {
+      yposicion = height;
+    }
+
+    strokeWeight(0.5);
+    stroke(color1, color2, color3);
+
+    //// primeras lineas de los puntos x1, y1////
+
+    //curva en la esquina superior izquierda
+    line(xposicion, y1punto * i, (x1punto * i) / 10, yposicion);
+
+    //curva en la esquina inferior izquierda
+    line(
+      xposicion,
+      height - y1punto * i,
+      (x1punto * i) / 10,
+      height - yposicion
+    );
+
+    ////segundas lineas de los puntos x2, y2////
+
+    //curva en la esquina superior derecha
+    stroke(color1 - 100, color2 - 100, color3 - 100);
+    line(
+      (x2punto * i * 4) / 3,
+      height - yposicion,
+      width - xposicion,
+      (y2punto * i) / 2
+    );
+
+    //curva en la esquina inferior derecha
+    line((x2punto * i * 4) / 3, yposicion, xposicion, (y2punto * i)     / 2);
+    }
+
+  //arcos del centro
+  noStroke();
+  fill(255, 120); //segundo parametro para transparencia
+  noStroke();
+  arc(250, 250, 50, 50, 0, PI);
+  fill(173, 181, 189);
+  arc(250, 250, 50, 50, PI, 0);
 }
