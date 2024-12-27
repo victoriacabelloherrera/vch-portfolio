@@ -20,7 +20,7 @@ function setup() {
 }
 
 function draw() {
-   background(0, 20);
+   background(0);
   let angulo = map(sin(frameCount * velocidad), -1, 1, -QUARTER_PI, QUARTER_PI);
   
   colores.actualizar();
