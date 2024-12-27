@@ -7,7 +7,7 @@ dependencies:
   - p5
 ---
 
-<div id="giroscopio">
+<div id="simple-sketch-holder">
     <script type="text/javascript" src="sketch.js"></script>
 </div>
 
