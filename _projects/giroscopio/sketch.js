@@ -1,26 +1,30 @@
 let particulas = [];
 
-let cantidad = 3; // num de particulas
+let cantidad = 3; // Número de partículas
 let tamano = 40; 
 let velocidad = 0.002; 
 let grosor = 5; 
 let colores; 
 
 function setup() {
-  let canvas = createCanvas(512, 512, WEBGL); 
-  canvas.parent('simple-sketch-holder');
+  createCanvas(512, 512, WEBGL); 
+  canvas.parent('simple-sketch-holder'); // Vincula el lienzo a un contenedor HTML
+  
   for (let i = 0; i < cantidad; i++) {
-    particulas.push(new Mover(0.01, 0.05, i));
+    particulas.push(new Mover(0.01, 0.05, i)); // Inicializa las partículas
   }
 
-  colores = new Colorear(); 
+  colores = new Colorear(); // Inicializa los colores dinámicos
   
   noStroke();
-  background(0, 255); 
+  background(0); // Fondo negro inicial
 }
 
 function draw() {
-   background(0);
+  // No borramos el fondo, para mantener la estela
+  // Esto permite que las partículas se acumulen, sin necesidad de borrar el lienzo
+
+  // Actualización de la posición y color de las partículas
   let angulo = map(sin(frameCount * velocidad), -1, 1, -QUARTER_PI, QUARTER_PI);
   
   colores.actualizar();
@@ -31,22 +35,19 @@ function draw() {
   directionalLight(0, 0, cb, -width / 2, -height / 2, 0);
   directionalLight(255 - cr, 255 - cg, 0, -width / 2, height / 2, 0);
   
-
-  specularMaterial(cr, cg, cb);
+  specularMaterial(cr, cg, cb); // Material que refleja los colores de las luces
   
-  // rotacion de espacio 3D
+  // Rotación del espacio 3D
   rotateX(angulo * 10);
   rotateY(angulo * 10);
   rotateZ(angulo * 10);
   
-
-  particulas[0].actualizar();
+  particulas[0].actualizar(); // Actualiza la posición de la primera partícula
   
-
   translate(particulas[0].posx, particulas[0].posy, particulas[0].posz);
   push();
-
-  // dibujo de particulas
+  
+  // Dibuja las partículas en cadena, creando la estela
   for (let i = 0; i < particulas.length; i++) {
     rotateX(angulo); 
     rotateY(angulo); 
@@ -57,36 +58,34 @@ function draw() {
     rotateZ(angulo * (i + 0.25) * 10);
     pop();
     
-    // diferentes tamaños de torus
+    // Se dibuja cada torus en las posiciones de las partículas
     torus((tamano * i + tamano) * 0.5, grosor); // Toro más pequeño
     torus(tamano * i + tamano, grosor, 4, 12); // Toro más grande
   }
+  
   pop();
 }
 
-
+// Clase para manejar las partículas
 function Mover(r, s, i) {
   this.posx = random(-width / 2, width / 2);  
   this.posy = random(-height / 2, height / 2);  
   this.posz = random(-height / 2, 0); 
 
-
   this.xn = 0.001 * i + 0.001;
   this.yn = 0.001 * i + 0.001;
   this.zn = 0.001 * i + 0.001;
 
-  // angulos de rotación
   this.thetaX = random(-PI, PI);
   this.thetaY = random(-PI, PI);
   this.thetaZ = random(-PI, PI);
 
- 
   this.thetaxl = s;
   this.thetayl = s;
   this.thetazl = s;
   this.rate = s; 
 
-  // funcion para actualizar la posicion de la partícula
+  // Actualiza la posición de la partícula
   this.actualizar = function() {
     if (random(1) < this.rate) {
       this.thetaxl *= -1; 
@@ -97,7 +96,6 @@ function Mover(r, s, i) {
     if (random(1) < this.rate) {
       this.thetazl *= -1; 
     }
-    
 
     this.thetaX += this.thetaxl;
     this.thetaY += this.thetayl;
@@ -107,7 +105,6 @@ function Mover(r, s, i) {
     this.yn += 0.01;
     this.zn += 0.01;
 
-  
     this.posx = map(noise(this.xn), 0, 1, -width * 0.6, width * 0.6);
     this.posy = map(noise(this.yn), 0, 1, -height * 0.6, height * 0.6);
     this.posz = map(noise(this.zn), 0, 1, -height * 0.6, 0);
@@ -120,12 +117,11 @@ function Colorear() {
   this.g = random(255); 
   this.b = random(255); 
   
-  //  ruido para los colores
   this.rn = random(100);
   this.gn = random(100);
   this.bn = random(100);
   
-  // actualizar los colores
+  // Actualiza los colores
   this.actualizar = function() {
     this.rn += 0.1;
     this.gn += 0.1;
