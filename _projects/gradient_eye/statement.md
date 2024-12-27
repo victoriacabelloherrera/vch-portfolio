@@ -10,7 +10,7 @@ dependencies:
 
 
 <div id="simple-sketch-holder">
-    <script type="text/javascript" src="gradient_eye.js"></script>
+    <script type="text/javascript" src="sketch.js"></script>
 </div>
 
 _Victoria Cabello Herrera_, 2023.
