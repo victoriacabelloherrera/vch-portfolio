@@ -5,7 +5,7 @@ let cx1 = 30;
 let cy1 = 500;
 
 function setup() {
-  let canvas = createCanvas(512, 512);
+  let canvas = createCanvas(600, 600);
   canvas.parent('simple-sketch-holder');
   frameRate(20); //velocidad
   angleMode(DEGREES);
