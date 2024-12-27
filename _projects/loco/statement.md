@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Loco"
+title:  "LOCO"
 date:   2024-05-20
 thumbnail: thumbnail.png
 dependencies:
