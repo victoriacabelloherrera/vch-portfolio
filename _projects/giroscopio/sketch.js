@@ -1,5 +1,5 @@
 let particulas = [];
-
+let trail = []; // Array para guardar el rastro de las partículas
 let cantidad = 3; // Número de partículas
 let tamano = 40; 
 let velocidad = 0.002; 
@@ -7,8 +7,8 @@ let grosor = 5;
 let colores; 
 
 function setup() {
-  createCanvas(512, 512, WEBGL); 
-  canvas.parent('simple-sketch-holder'); // Vincula el lienzo a un contenedor HTML
+  let canvas = createCanvas(512, 512, WEBGL); 
+  canvas.parent('simple-sketch-holder'); // Vincula el lienzo al contenedor HTML
   
   for (let i = 0; i < cantidad; i++) {
     particulas.push(new Mover(0.01, 0.05, i)); // Inicializa las partículas
@@ -17,14 +17,11 @@ function setup() {
   colores = new Colorear(); // Inicializa los colores dinámicos
   
   noStroke();
-  background(0); // Fondo negro inicial
+  background(0); // Fondo negro
 }
 
 function draw() {
-  // No borramos el fondo, para mantener la estela
-  // Esto permite que las partículas se acumulen, sin necesidad de borrar el lienzo
-
-  // Actualización de la posición y color de las partículas
+  // Actualiza el color y las partículas
   let angulo = map(sin(frameCount * velocidad), -1, 1, -QUARTER_PI, QUARTER_PI);
   
   colores.actualizar();
@@ -35,34 +32,39 @@ function draw() {
   directionalLight(0, 0, cb, -width / 2, -height / 2, 0);
   directionalLight(255 - cr, 255 - cg, 0, -width / 2, height / 2, 0);
   
-  specularMaterial(cr, cg, cb); // Material que refleja los colores de las luces
+  specularMaterial(cr, cg, cb); // Material de las partículas
   
   // Rotación del espacio 3D
   rotateX(angulo * 10);
   rotateY(angulo * 10);
   rotateZ(angulo * 10);
   
-  particulas[0].actualizar(); // Actualiza la posición de la primera partícula
+  // Actualiza la posición de la partícula
+  particulas[0].actualizar();
   
-  translate(particulas[0].posx, particulas[0].posy, particulas[0].posz);
-  push();
+  // Guarda la posición de la partícula para crear el rastro
+  trail.push(createVector(particulas[0].posx, particulas[0].posy, particulas[0].posz));
   
-  // Dibuja las partículas en cadena, creando la estela
-  for (let i = 0; i < particulas.length; i++) {
-    rotateX(angulo); 
-    rotateY(angulo); 
-    rotateZ(angulo); 
+  // Dibuja el rastro de las partículas
+  for (let i = 0; i < trail.length; i++) {
     push();
-    rotateX(angulo * (i + 0.25) * 10); 
-    rotateY(angulo * (i + 0.25) * 10);
-    rotateZ(angulo * (i + 0.25) * 10);
+    let alpha = map(i, 0, trail.length, 255, 0); // Transparencia que se desvanece con el tiempo
+    fill(cr, cg, cb, alpha); // Color de las partículas con transparencia
+    noStroke();
+    translate(trail[i].x, trail[i].y, trail[i].z);
+    sphere(tamano * 0.1); // Usamos esferas para el rastro
     pop();
-    
-    // Se dibuja cada torus en las posiciones de las partículas
-    torus((tamano * i + tamano) * 0.5, grosor); // Toro más pequeño
-    torus(tamano * i + tamano, grosor, 4, 12); // Toro más grande
+  }
+
+  // Limita el tamaño del rastro
+  if (trail.length > 1000) {
+    trail.splice(0, 10); // Elimina los elementos más antiguos para no sobrecargar la memoria
   }
   
+  // Dibuja las partículas en movimiento
+  translate(particulas[0].posx, particulas[0].posy, particulas[0].posz);
+  push();
+  torus(tamano, grosor); // Dibuja los torus de la partícula
   pop();
 }
 
