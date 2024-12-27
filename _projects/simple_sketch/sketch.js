@@ -3,7 +3,7 @@ function setup() {
 }
 
 function draw() {
-  let canvas = createCanvas(512, 512);
+  let canvas = createCanvas(710, 400);
   canvas.parent('simple-sketch-holder');
   background(33, 37, 41); // gris oscuro
 
