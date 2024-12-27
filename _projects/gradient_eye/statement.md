@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Gradient Eye"
+title:  "GRADIENT EYE"
 date:   2023-05-06
 thumbnail: thumbnail.png
 dependencies:
