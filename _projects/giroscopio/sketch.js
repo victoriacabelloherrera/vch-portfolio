@@ -16,10 +16,11 @@ function setup() {
   colores = new Colorear(); 
   
   noStroke();
-  background(0, 255); 
+  
 }
 
 function draw() {
+  background(0, 255); 
   let angulo = map(sin(frameCount * velocidad), -1, 1, -QUARTER_PI, QUARTER_PI);
   
   colores.actualizar();
