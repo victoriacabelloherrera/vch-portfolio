@@ -9,7 +9,7 @@ let fondo, codigo2;
 function preload() {
  
   codigo2 = loadImage("assets/codigoo.png");
-  fondo = loadImage("https://raw.githubusercontent.com/usuario/repositorio/main/assets/fondo.png");
+  fondo = loadImage("https://raw.githubusercontent.com/victoriacabelloherrera/vch-portfolio/main/assets/fondo.png");
   synth = loadSound("assets/synth.mp3");
 }
 
