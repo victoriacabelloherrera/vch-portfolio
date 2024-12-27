@@ -1,15 +1,13 @@
 ---
 layout: post
-title:  "Simple p5 sketch"
-date:   2016-09-01
+title:  "Sol de Noche"
+date:   2023-05-01
 thumbnail: thumbnail.png
-dependencies:
-    - p5
----
+
 
 
 <div id="simple-sketch-holder">
-    <script type="text/javascript" src="simple_sketch.js"></script>
+    <script type="text/javascript" src="sketch.js"></script>
 </div>
 
 In order to include a P5.js sketch in your post:
