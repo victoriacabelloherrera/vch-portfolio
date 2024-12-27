@@ -8,9 +8,9 @@ let fondo, codigo2;
 
 function preload() {
  
-  codigo2 = loadImage("https://raw.githubusercontent.com/victoriacabelloherrera/vch-portfolio/main/assets/codigoo.png");
-  fondo = loadImage("https://raw.githubusercontent.com/victoriacabelloherrera/vch-portfolio/main/assets/fondo.png");
-  synth = loadSound("https://raw.githubusercontent.com/victoriacabelloherrera/vch-portfolio/main/assets/synth.mp3");
+  codigo2 = loadImage("codigoo.png");
+  fondo = loadImage("fondo.png");
+  synth = loadSound("synth.mp3");
 }
 
 function setup() {
