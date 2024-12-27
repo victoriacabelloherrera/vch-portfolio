@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Sol de Noche"
+title:  "SOL DE NOCHE"
 date:   2023-05-01
 thumbnail: thumbnail.png
 dependencies:
