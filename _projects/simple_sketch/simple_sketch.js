@@ -1,9 +1,11 @@
 function setup() {
-  createCanvas(512, 512);
+  let canvas = createCanvas(512, 512);
+  canvas.parent('div-sketch');
 }
 
 function draw() {
   background(33, 37, 41); // gris oscuro
+  
 
   let color1 = color(mouseX);
   let color2 = color(mouseY);
