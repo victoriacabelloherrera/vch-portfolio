@@ -1,7 +1,7 @@
 let img;
 
 function preload() {
-    fondo = loadImage("fondoo.png");
+    fondo = loadImage("fondo.png");
   }
 
   function setup() {
