@@ -13,13 +13,12 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: a portfolio for p5.js projects
+title: Victoria Cabello Herrera
 email: vcabelloherrera@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Esta es una galería de arte de mis trabajos hechos en p5js, Javascript.
 baseurl: "/vch-portfolio" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: benjaminhabert
 github_username:  victoriacabelloherrera
 
 # Build settings
