@@ -15,7 +15,7 @@ function preload() {
 }
 
 function setup() {
- let synth;
+ 
   let canvas = createCanvas(512, 512); 
   canvas.parent('simple-sketch-holder');
   synth.loop();
