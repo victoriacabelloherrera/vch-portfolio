@@ -3,23 +3,18 @@ let ancho, alto, profundidad;
 let rotacionX, rotacionY;
 let camX, camY, camZ;
 
-
 // variables para las texturas
 let fondo, codigo2;
 
 function preload() {
- 
-  codigo2 = loadImage("codigoo.png");
   fondo = loadImage("fondo.png");
-  
+  codigo2 = loadImage("codigoo.png");
+  synth = loadSound("synth.mp3");
 }
 
 function setup() {
- 
-  let canvas = createCanvas(512, 512); 
-  canvas.parent('simple-sketch-holder');
- 
- 
+  createCanvas(500, 500, WEBGL);
+  synth.loop();
   // Tamaño de los cuadrados
   let cube = 300;
 
