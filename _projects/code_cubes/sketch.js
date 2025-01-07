@@ -2,6 +2,7 @@ let x, y, z, espacio, filas, colum, dentro;
 let ancho, alto, profundidad;
 let rotacionX, rotacionY;
 let camX, camY, camZ;
+let synth;
 
 // variables para las texturas
 let fondo, codigo2;
